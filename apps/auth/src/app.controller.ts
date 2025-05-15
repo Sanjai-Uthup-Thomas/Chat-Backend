@@ -1,12 +1,17 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Controller } from '@nestjs/common';
+import { GrpcMethod } from '@nestjs/microservices';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  @GrpcMethod('AuthService', 'SignUp')
+  signUp(data: any) {
+    // Implement actual signup logic here
+    return { accessToken: 'mocked-token-signup' };
+  }
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @GrpcMethod('AuthService', 'Login')
+  login(data: any) {
+    // Implement actual login logic here
+    return { accessToken: 'mocked-token-login' };
   }
 }

@@ -7,13 +7,12 @@ async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(AppModule, {
     transport: Transport.GRPC,
     options: {
-      package: 'auth',
-      protoPath: join(__dirname, '../../../proto/auth.proto'),
-      url: '0.0.0.0:50051',
+      package: 'notification',
+      protoPath: join(__dirname, '../../../proto/notification.proto'),
+      url: '0.0.0.0:50054',
     },
   });
 
   await app.listen();
 }
 bootstrap();
-

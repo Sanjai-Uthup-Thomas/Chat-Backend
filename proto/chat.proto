@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package chat;
+
+service ChatService {
+  rpc SendMessage (SendMessageRequest) returns (MessageResponse);
+  rpc GetMessages (GetMessagesRequest) returns (MessagesResponse);
+}
+
+message SendMessageRequest {
+  string senderId = 1;
+  string receiverId = 2;
+  string content = 3;
+}
+
+message GetMessagesRequest {
+  string senderId = 1;
+  string receiverId = 2;
+}
+
+message MessageResponse {
+  string id = 1;
+  string senderId = 2;
+  string receiverId = 3;
+  string content = 4;
+  string timestamp = 5;
+}
+
+message MessagesResponse {
+  repeated MessageResponse messages = 1;
+}

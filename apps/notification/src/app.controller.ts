@@ -6,13 +6,8 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @GrpcMethod('ChatService', 'SendMessage')
-  sendMessage(data: any) {
-    return this.appService.sendMessage(data);
-  }
-
-  @GrpcMethod('ChatService', 'GetMessages')
-  getMessages(data: any) {
-    return this.appService.getMessages(data);
+  @GrpcMethod('NotificationService', 'SendNotification')
+  sendNotification(data: { userId: string; message:string }) {
+    return this.appService.sendNotification(data);
   }
 }
